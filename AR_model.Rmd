@@ -1,0 +1,57 @@
+---
+title: "Homework"
+author: "Daniel Olofin"
+date: "2025-09-26"
+output:
+  pdf_document:
+    latex_engine: xelatex
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+# --- Parameters ---
+phi      <- 0.5
+sigma_a  <- 1
+n        <- 10        # produce ε_0, ε_1, ..., ε_10
+
+# --- Simulate a stationary AR(1) path ---
+set.seed(123)
+
+# stationary variance:
+sigma2_eps <- sigma_a^2 / (1 - phi^2)   # 4/3
+var_at <- 1
+# initialize from stationary distribution
+eps <- numeric(n + 1)
+eps[1] <- rnorm(1, mean = 0, sd = sqrt(sigma2_eps))  # ε_0
+
+# simulate ε_t = φ ε_{t-1} + a_t
+for (t in 2:(n + 1)) {
+  a_t <- rnorm(1, mean = 0, sd = var_at)
+  eps[t] <- phi * eps[t - 1] + a_t
+}
+
+# put in a tibble/data.frame
+sim <- data.frame(t = 0:n, eps = eps)
+sim
+```
+
+
+```{r}
+library(ggplot2)
+
+ggplot(sim, aes(x = t, y = eps)) +
+  geom_line(color = "blue", size = 1) +
+  geom_point(color = "red", size = 2) +
+  labs(
+    title = "Simulated AR(1) Process (φ = 0.5, stationary start)",
+    x = "Time t",
+    y = expression(epsilon[t])
+  ) +
+  theme_minimal()
+
+```
+

@@ -420,9 +420,7 @@ ggcorrmat(num_new_data) +
   ) -> viz_4
 
 viz_3|viz_4
-
-
-
+viz_3|viz_4
 ```
 
 ##### Visualization Description:

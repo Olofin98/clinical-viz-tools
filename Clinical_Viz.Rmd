@@ -164,6 +164,8 @@ new_data %>%
 
 
 viz_1|viz_2
+
+
 ```
 
 ##### Visualization Description:
@@ -198,7 +200,7 @@ ggforest(cox_fit,
          cpositions = c(0.02, 0.22, 0.4),
          fontsize = 1.0,
          refLabel = "Reference",
-         noDigits = 2)
+         noDigits = 2) 
 ```
 
 ##### Visualization Description:
@@ -259,6 +261,7 @@ plot2 <- surv2$plot / surv2$table + plot_layout(heights = c(4, 1))
 (plot1 | plot2) +
   plot_annotation(title = "Kaplan-Meier Curves with Compact Risk Tables")
 
+
 ```
 ##### Visualization Description:
 
@@ -276,7 +279,7 @@ The log-rank test indicates no significant difference in survival by sex (p = 0.
 
 The cumulative incidence analysis examines the probability of recurrence or death over time among colon cancer patients, accounting for competing risks. This visualization provides a complementary perspective to the Kaplan–Meier survival curves by focusing on event occurrence rather than event-free survival, thereby highlighting how treatment and demographic factors influence the likelihood of experiencing an event during follow-up.
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=12, fig.height=6, fig.align='center', out.width="100%"}
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=15, fig.height=6, fig.align='center', out.width="100%"}
 c_plot_1<-ggsurvplot(fit_1, 
            data = mydata, 
            fun = "event", 
@@ -323,6 +326,7 @@ plot2 <- c_plot_2$plot / c_plot_2$table + plot_layout(heights = c(4, 1))
 (plot1 | plot2) +
   plot_annotation(title = "Kaplan-Meier Curves with Compact Risk Tables")
 
+
 ```
 
 ##### Visualization Description:
@@ -362,8 +366,7 @@ ggplot(tidy_cox, aes(x = reorder(term, abs(estimate)), y = estimate)) +
     subtitle = "Based on absolute magnitude of regression coefficients",
     x = "Variable", y = "Coefficient Estimate (log HR)"
   ) +
-  theme_minimal()
-
+  theme_minimal() 
 ```
 
 
@@ -417,6 +420,9 @@ ggcorrmat(num_new_data) +
   ) -> viz_4
 
 viz_3|viz_4
+
+
+
 ```
 
 ##### Visualization Description:

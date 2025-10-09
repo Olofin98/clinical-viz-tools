@@ -20,7 +20,7 @@ This clinical visualization project explores patient-level data from a colon can
 
 ## Aim
 
-The aim of this project is to develop a visualization gallery that demonstrates the power of data visualization in summarizing and interpreting clinical trial data. Using the colon dataset from the survival R package, the project seeks to highlight how different visualization techniques can uncover patterns, communicate trial results, and support evidence-based decision-making in oncology research.
+The aim of this project is to develop a visualization gallery that demonstrates the power of data visualization in summarizing and interpreting clinical trial data. Using the `colon` dataset from the survival R package, the project seeks to highlight how different visualization techniques can uncover patterns, communicate trial results, and support evidence-based decision-making in oncology research.
 
 ## Objectives
 
@@ -40,7 +40,8 @@ Use R (`ggplot2`, `survminer`, `etc`.) to build reproducible visualization pipel
 Assemble the collection into a cohesive visualization gallery (markdown/Quarto notebook or GitHub repo) to serve as a demonstration of technical, statistical, and communication skills.
 
 
-# liberies 
+## Liberies
+
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(survival)
@@ -55,13 +56,16 @@ library(gridExtra)
 library(ggstatsplot)
 
 ```
+
 ## Loading of Data
+
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 # replace path with your dataset location
 mydata <- survival::colon
 ```
 
-### Data Cleaning and Restructing 
+## Data Cleaning and Restructing
+
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 new_data<-mydata %>% 
   drop_na() %>% 
@@ -424,7 +428,7 @@ viz_3|viz_4
 
 ##### Interpretation:
 
-The results reveal no strong correlations among the three variables. Survival time shows a moderate negative correlation with lymph node count (r = -0.29), indicating that patients with more positive nodes tend to have shorter survival. The correlation between age and survival time (r ≈ 0) is negligible, suggesting that age alone is not a major determinant of survival in this cohort.
+The results reveal no strong correlations among the three variables. Survival time shows a moderate negative correlation with lymph node count (r = -0.29), indicating that patients with more positive nodes tend to have shorter survival. The correlation between age and survival time (r = 0) is negligible, suggesting that age alone is not a major determinant of survival in this cohort.
 
 
 ## Conclusion
@@ -434,4 +438,4 @@ This visualization project effectively demonstrates how statistical graphics can
 
 ### Citation
 
-*Olofin, D. (2025). Clinical Visualization Gallery: Exploring Colon Cancer Survival and Prognostic Patterns Using R*. Retrieved from [GitHub Repository](https://github.com/Olofin98/clinical-viz-tools) and full report available at [mywebsite](https://olofin98.github.io/Daniel.github.io/Projects.html).  
+*Olofin, D. (2025). Clinical Visualization Gallery: Exploring Colon Cancer Survival and Prognostic Patterns Using R*. Retrieved from [GitHub Repository](https://github.com/Olofin98/clinical-viz-tools) and full report available at [My Website](https://olofin98.github.io/Daniel.github.io/Projects.html).  

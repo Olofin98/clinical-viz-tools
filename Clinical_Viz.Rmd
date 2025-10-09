@@ -444,4 +444,4 @@ This visualization project effectively demonstrates how statistical graphics can
 
 ### Citation
 
-*Olofin, D. (2025). Clinical Visualization Gallery: Exploring Colon Cancer Survival and Prognostic Patterns Using R*. Retrieved from [GitHub Repository](https://github.com/Olofin98/clinical-viz-tools) and full report available at [My Website](https://olofin98.github.io/Daniel.github.io/Projects.html).  
+*Olofin, D. (2025). Clinical Visualization Gallery: Exploring Colon Cancer Survival and Prognostic Patterns Using R*. *Retrieved from* [GitHub Repository](https://github.com/Olofin98/clinical-viz-tools) *and full report available at* [My Website](https://olofin98.github.io/Daniel.github.io/Projects.html).  

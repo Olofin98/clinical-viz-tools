@@ -431,7 +431,7 @@ viz_3|viz_4
 
 ##### Interpretation:
 
-The results reveal no strong correlations among the three variables. Survival time shows a moderate negative correlation with lymph node count (r = -0.29), indicating that patients with more positive nodes tend to have shorter survival. The correlation between age and survival time (r = 0) is negligible, suggesting that age alone is not a major determinant of survival in this cohort.
+The results reveal no strong correlations among the three variables. Survival time shows a moderate negative correlation with lymph node count **(r = -0.29)**, indicating that patients with more positive nodes tend to have shorter survival. The correlation between age and survival time **(r = 0)** is negligible, suggesting that age alone is not a major determinant of survival in this cohort.
 
 
 ## Conclusion

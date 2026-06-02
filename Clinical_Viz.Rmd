@@ -163,9 +163,15 @@ new_data %>%
         axis.text.y = element_blank()) -> viz_2
 
 
-viz_1|viz_2
+combined_plot <- viz_1|viz_2
 
-
+ggsave(
+  filename = "sex_treatment_plots_combined.png",
+  plot = combined_plot,
+  width = 16,   # roughly double the width since plots are side-by-side
+  height = 5,
+  dpi = 600
+)
 ```
 
 ##### Visualization Description:
@@ -194,13 +200,21 @@ Survival analysis is a cornerstone of oncology research, allowing clinicians and
 cox_fit <- coxph(Surv(time, status) ~ rx + age + nodes + extent, data = mydata)
 
 # Enhanced ggforest
-ggforest(cox_fit, 
+forest_plot <- ggforest(cox_fit, 
          data = mydata,
          main = "Hazard Ratios for Colon Cancer Survival",
          cpositions = c(0.02, 0.22, 0.4),
          fontsize = 1.0,
          refLabel = "Reference",
          noDigits = 2) 
+ggsave(
+  filename = "Figure_3_Cox_Forest_Plot.png",
+  plot = forest_plot,
+  width = 10,
+  height = 6,
+  dpi = 600,
+  bg = "white"
+)
 ```
 
 ##### Visualization Description:
@@ -258,10 +272,17 @@ surv2 <-ggsurvplot(fit_2,
 plot1 <- surv1$plot / surv1$table + plot_layout(heights = c(4, 1))
 plot2 <- surv2$plot / surv2$table + plot_layout(heights = c(4, 1))
 
-(plot1 | plot2) +
+km_combined <- (plot1 | plot2) +
   plot_annotation(title = "Kaplan-Meier Curves with Compact Risk Tables")
 
-
+ggsave(
+  filename = "Figure_4_Kaplan_Meier_Curves.png",
+  plot = km_combined,
+  width = 14,
+  height = 8,
+  dpi = 600,
+  bg = "white"
+)
 ```
 ##### Visualization Description:
 
@@ -323,10 +344,17 @@ c_plot_2 <- ggsurvplot(fit_2,
 plot1 <- c_plot_1$plot / c_plot_1$table + plot_layout(heights = c(4, 1))
 plot2 <- c_plot_2$plot / c_plot_2$table + plot_layout(heights = c(4, 1))
 
-(plot1 | plot2) +
+cuminc_combined <- (plot1 | plot2) +
   plot_annotation(title = "Kaplan-Meier Curves with Compact Risk Tables")
 
-
+ggsave(
+  filename = "Figure_5_Cumulative_Incidence_Curves.png",
+  plot = cuminc_combined,
+  width = 14,
+  height = 8,
+  dpi = 600,
+  bg = "white"
+)
 ```
 
 ##### Visualization Description:
@@ -357,7 +385,7 @@ tidy_cox <- tidy(cox_fit, exponentiate = FALSE, conf.int = TRUE) %>%
   filter(term != "(Intercept)")  # Remove intercept if present
 
 # Plot
-ggplot(tidy_cox, aes(x = reorder(term, abs(estimate)), y = estimate)) +
+varimp_plot <- ggplot(tidy_cox, aes(x = reorder(term, abs(estimate)), y = estimate)) +
   geom_segment(aes(xend = term, y = 0, yend = estimate), color = "grey60") +
   geom_point(size = 4, color = "steelblue") +
   coord_flip() +
@@ -367,6 +395,15 @@ ggplot(tidy_cox, aes(x = reorder(term, abs(estimate)), y = estimate)) +
     x = "Variable", y = "Coefficient Estimate (log HR)"
   ) +
   theme_minimal() 
+
+ggsave(
+  filename = "Figure_6_Cox_Variable_Importance.png",
+  plot = varimp_plot,
+  width = 8,
+  height = 5,
+  dpi = 600,
+  bg = "white"
+)
 ```
 
 
@@ -419,7 +456,16 @@ ggcorrmat(num_new_data) +
     legend.position = "right"
   ) -> viz_4
 
-viz_3|viz_4
+combined_exploratory <- viz_3|viz_4
+
+ggsave(
+  filename = "Figure_7_Exploratory_Data_Analysis.png",
+  plot = combined_exploratory,
+  width = 14,
+  height = 6,
+  dpi = 600,
+  bg = "white"
+)
 ```
 
 ##### Visualization Description:
